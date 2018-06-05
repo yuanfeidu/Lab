@@ -31,6 +31,7 @@
     </typeAliases>  
     <!-- 非注解的sql映射文件配置，如果使用mybatis注解，该mapper无需配置，但是如果mybatis注解中包含@resultMap注解，则mapper必须配置，给resultMap注解使用 -->  
     <mappers>  
-        <!-- 显式指定mapper配置文件写这里 采用与SqlMapper同名，并且放在同一个包下，可以自动配置，所以这里不写了 -->  
+        <!-- 显式指定mapper配置文件写这里 采用与SqlMapper同名，并且放在同一个包下，可以自动配置，所以这里不写了 --> 
+        <!-- <mapper resource="mapper/Job_infMapper.xml"/>  -->
     </mappers>  
 </configuration>   

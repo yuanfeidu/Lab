@@ -68,4 +68,10 @@
       REMARK = #{remark,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="queryAllJobs" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from job_inf
+  </select>
 </mapper>

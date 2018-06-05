@@ -25,14 +25,12 @@
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<!-- <property name="mapperLocations" value="WEB-INF/classes/config/mappers/**/*.xml" /> -->
 		<property name="configLocation" value="WEB-INF/classes/config/mybatis-config.xml" />
-		 <property name="typeAliasesPackage" value="com.dduyyu.entity" />
 	</bean>
 	
 	<!-- scan for mappers and let them be autowired -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.dduyyu.mapper" />
+        <property name="basePackage" value="yuanfei.du.hrm.dao.mapper" />
     </bean>
     
 	<!-- 声明事物 -->
