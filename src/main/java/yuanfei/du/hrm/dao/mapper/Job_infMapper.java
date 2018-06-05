@@ -1,6 +1,6 @@
-package dao.mapper;
+package yuanfei.du.hrm.dao.mapper;
 
-import entity.Job_inf;
+import yuanfei.du.hrm.entity.Job_inf;
 
 public interface Job_infMapper {
     int deleteByPrimaryKey(Integer id);

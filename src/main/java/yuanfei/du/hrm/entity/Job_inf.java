@@ -1,6 +1,6 @@
-package entity;
+package yuanfei.du.hrm.entity;
 
-public class DeptInf {
+public class Job_inf {
     private Integer id;
 
     private String name;

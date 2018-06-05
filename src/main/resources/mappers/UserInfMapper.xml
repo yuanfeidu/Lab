@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.mapper.UserInfMapper">
-  <resultMap id="BaseResultMap" type="entity.UserInf">
+<mapper namespace="yuanfei.du.hrm.dao.mapper.UserInfMapper">
+  <resultMap id="BaseResultMap" type="yuanfei.du.hrm.entity.UserInf">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="loginname" jdbcType="VARCHAR" property="loginname" />
     <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
@@ -22,7 +22,7 @@
     delete from user_inf
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="entity.UserInf">
+  <insert id="insert" parameterType="yuanfei.du.hrm.entity.UserInf">
     insert into user_inf (ID, loginname, PASSWORD, 
       STATUS, createdate, username
       )
@@ -30,7 +30,7 @@
       #{status,jdbcType=INTEGER}, #{createdate,jdbcType=TIMESTAMP}, #{username,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="entity.UserInf">
+  <insert id="insertSelective" parameterType="yuanfei.du.hrm.entity.UserInf">
     insert into user_inf
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -73,7 +73,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="entity.UserInf">
+  <update id="updateByPrimaryKeySelective" parameterType="yuanfei.du.hrm.entity.UserInf">
     update user_inf
     <set>
       <if test="loginname != null">
@@ -94,7 +94,7 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="entity.UserInf">
+  <update id="updateByPrimaryKey" parameterType="yuanfei.du.hrm.entity.UserInf">
     update user_inf
     set loginname = #{loginname,jdbcType=VARCHAR},
       PASSWORD = #{password,jdbcType=VARCHAR},

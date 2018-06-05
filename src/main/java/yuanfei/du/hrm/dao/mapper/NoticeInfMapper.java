@@ -1,6 +1,6 @@
-package dao.mapper;
+package yuanfei.du.hrm.dao.mapper;
 
-import entity.NoticeInf;
+import yuanfei.du.hrm.entity.NoticeInf;
 
 public interface NoticeInfMapper {
     int deleteByPrimaryKey(Integer id);

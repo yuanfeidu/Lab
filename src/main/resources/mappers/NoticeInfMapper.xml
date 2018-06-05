@@ -1,37 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.mapper.DocumentInfMapper">
-  <resultMap id="BaseResultMap" type="entity.DocumentInf">
+<mapper namespace="yuanfei.du.hrm.dao.mapper.NoticeInfMapper">
+  <resultMap id="BaseResultMap" type="yuanfei.du.hrm.entity.NoticeInf">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="TITLE" jdbcType="VARCHAR" property="title" />
-    <result column="filename" jdbcType="VARCHAR" property="filename" />
-    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
     <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
     <result column="USER_ID" jdbcType="INTEGER" property="userId" />
   </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="yuanfei.du.hrm.entity.NoticeInf">
+    <result column="CONTENT" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
   <sql id="Base_Column_List">
-    ID, TITLE, filename, REMARK, CREATE_DATE, USER_ID
+    ID, TITLE, CREATE_DATE, USER_ID
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <sql id="Blob_Column_List">
+    CONTENT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
-    from document_inf
+    ,
+    <include refid="Blob_Column_List" />
+    from notice_inf
     where ID = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from document_inf
+    delete from notice_inf
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="entity.DocumentInf">
-    insert into document_inf (ID, TITLE, filename, 
-      REMARK, CREATE_DATE, USER_ID
-      )
-    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{filename,jdbcType=VARCHAR}, 
-      #{remark,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{userId,jdbcType=INTEGER}
-      )
+  <insert id="insert" parameterType="yuanfei.du.hrm.entity.NoticeInf">
+    insert into notice_inf (ID, TITLE, CREATE_DATE, 
+      USER_ID, CONTENT)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{userId,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="entity.DocumentInf">
-    insert into document_inf
+  <insert id="insertSelective" parameterType="yuanfei.du.hrm.entity.NoticeInf">
+    insert into notice_inf
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         ID,
@@ -39,17 +43,14 @@
       <if test="title != null">
         TITLE,
       </if>
-      <if test="filename != null">
-        filename,
-      </if>
-      <if test="remark != null">
-        REMARK,
-      </if>
       <if test="createDate != null">
         CREATE_DATE,
       </if>
       <if test="userId != null">
         USER_ID,
+      </if>
+      <if test="content != null">
+        CONTENT,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -59,31 +60,22 @@
       <if test="title != null">
         #{title,jdbcType=VARCHAR},
       </if>
-      <if test="filename != null">
-        #{filename,jdbcType=VARCHAR},
-      </if>
-      <if test="remark != null">
-        #{remark,jdbcType=VARCHAR},
-      </if>
       <if test="createDate != null">
         #{createDate,jdbcType=TIMESTAMP},
       </if>
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
       </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="entity.DocumentInf">
-    update document_inf
+  <update id="updateByPrimaryKeySelective" parameterType="yuanfei.du.hrm.entity.NoticeInf">
+    update notice_inf
     <set>
       <if test="title != null">
         TITLE = #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="filename != null">
-        filename = #{filename,jdbcType=VARCHAR},
-      </if>
-      <if test="remark != null">
-        REMARK = #{remark,jdbcType=VARCHAR},
       </if>
       <if test="createDate != null">
         CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
@@ -91,14 +83,23 @@
       <if test="userId != null">
         USER_ID = #{userId,jdbcType=INTEGER},
       </if>
+      <if test="content != null">
+        CONTENT = #{content,jdbcType=LONGVARCHAR},
+      </if>
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="entity.DocumentInf">
-    update document_inf
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="yuanfei.du.hrm.entity.NoticeInf">
+    update notice_inf
     set TITLE = #{title,jdbcType=VARCHAR},
-      filename = #{filename,jdbcType=VARCHAR},
-      REMARK = #{remark,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      USER_ID = #{userId,jdbcType=INTEGER},
+      CONTENT = #{content,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="yuanfei.du.hrm.entity.NoticeInf">
+    update notice_inf
+    set TITLE = #{title,jdbcType=VARCHAR},
       CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
       USER_ID = #{userId,jdbcType=INTEGER}
     where ID = #{id,jdbcType=INTEGER}

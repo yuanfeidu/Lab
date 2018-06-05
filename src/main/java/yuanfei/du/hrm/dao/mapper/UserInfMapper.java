@@ -1,6 +1,6 @@
-package dao.mapper;
+package yuanfei.du.hrm.dao.mapper;
 
-import entity.UserInf;
+import yuanfei.du.hrm.entity.UserInf;
 
 public interface UserInfMapper {
     int deleteByPrimaryKey(Integer id);

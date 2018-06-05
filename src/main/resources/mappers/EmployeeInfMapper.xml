@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.mapper.EmployeeInfMapper">
-  <resultMap id="BaseResultMap" type="entity.EmployeeInf">
+<mapper namespace="yuanfei.du.hrm.dao.mapper.EmployeeInfMapper">
+  <resultMap id="BaseResultMap" type="yuanfei.du.hrm.entity.EmployeeInf">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="DEPT_ID" jdbcType="INTEGER" property="deptId" />
     <result column="JOB_ID" jdbcType="INTEGER" property="jobId" />
@@ -37,7 +37,7 @@
     delete from employee_inf
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="entity.EmployeeInf">
+  <insert id="insert" parameterType="yuanfei.du.hrm.entity.EmployeeInf">
     insert into employee_inf (ID, DEPT_ID, JOB_ID, 
       NAME, CARD_ID, ADDRESS, 
       POST_CODE, TEL, PHONE, 
@@ -53,7 +53,7 @@
       #{education,jdbcType=VARCHAR}, #{speciality,jdbcType=VARCHAR}, #{hobby,jdbcType=VARCHAR}, 
       #{remark,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="entity.EmployeeInf">
+  <insert id="insertSelective" parameterType="yuanfei.du.hrm.entity.EmployeeInf">
     insert into employee_inf
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -180,7 +180,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="entity.EmployeeInf">
+  <update id="updateByPrimaryKeySelective" parameterType="yuanfei.du.hrm.entity.EmployeeInf">
     update employee_inf
     <set>
       <if test="deptId != null">
@@ -243,7 +243,7 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="entity.EmployeeInf">
+  <update id="updateByPrimaryKey" parameterType="yuanfei.du.hrm.entity.EmployeeInf">
     update employee_inf
     set DEPT_ID = #{deptId,jdbcType=INTEGER},
       JOB_ID = #{jobId,jdbcType=INTEGER},

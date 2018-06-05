@@ -1,4 +1,4 @@
-package entity;
+package yuanfei.du.hrm.entity;
 
 import java.util.Date;
 
